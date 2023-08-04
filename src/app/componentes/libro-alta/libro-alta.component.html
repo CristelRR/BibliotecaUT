@@ -4,7 +4,7 @@
             <app-lateral></app-lateral>
         </div> <!-- CIERRA MENÚ LATERAL-->
         <div class="con col-sm-10"> <!-- CONTENIDO-->
-            <form>
+            <form  #libroForm="ngForm" (ngSubmit)="createLibro(libroForm)">
                 <div class="row aling-items-center ti">
                     <p>Alta Libro</p>
                 </div>
@@ -15,7 +15,7 @@
                             <label for="id-libro" class="col-form-label">ID Libro:</label>
                             </div>
                             <div class="col-sm-9">
-                            <input type="text" id="id-libro" class="form-control" placeholder="Ingresa ID Libro">
+                            <input type="text" id="id-libro" class="form-control" placeholder="Ingresa ID Libro" name="id_libro" [(ngModel)]="libroService.libro.id_libro">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -23,7 +23,7 @@
                                 <label for="tipo" class="col-form-label">Tipo:</label>
                             </div>
                             <div class="col-sm-9">
-                                <select class="form-select" id="categoria" placeholder="Selecciona tipo">
+                                <select class="form-select" id="categoria" placeholder="Selecciona tipo" name="id_tipo" [(ngModel)]="libroService.libro.id_tipo">
                                     <option selected >Selecciona tipo...</option>
                                     <option value="1">Libros</option>
                                     <option value="2">Revistas</option>
@@ -42,7 +42,7 @@
                             <label for="titulo" class="col-form-label">Título:</label>
                             </div>
                             <div class="col-sm-9">
-                            <input type="text" id="titulo" class="form-control" placeholder="Ingresa título">
+                            <input type="text" id="titulo" class="form-control" placeholder="Ingresa título" name="titulo" [(ngModel)]="libroService.libro.titulo">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -50,7 +50,7 @@
                             <label for="autor" class="col-form-label">Autor:</label>
                             </div>
                             <div class="col-sm-9">
-                            <input type="text" id="autor" class="form-control" placeholder="Ingresa autor">
+                            <input type="text" id="autor" class="form-control" placeholder="Ingresa autor" name="autor" [(ngModel)]="libroService.libro.autor">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -58,7 +58,7 @@
                             <label for="editorial" class="col-form-label">Editorial:</label>
                             </div>
                             <div class="col-sm-9">
-                            <input type="text" id="editorial" class="form-control" placeholder="Ingresa editorial">
+                            <input type="text" id="editorial" class="form-control" placeholder="Ingresa editorial" name="id_editorial" [(ngModel)]="libroService.libro.id_editorial">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -66,7 +66,7 @@
                             <label for="categoria" class="col-form-label">Categoría:</label>
                             </div>
                             <div class="col-sm-9">
-                                <select class="form-select" id="categoria" placeholder="Selecciona categoría">
+                                <select class="form-select" id="categoria" placeholder="Selecciona categoría" name="id_categoria" [(ngModel)]="libroService.libro.id_categoria">
                                     <option selected >Selecciona categoría...</option>
                                     <option value="1">Generalidades</option>
                                     <option value="2">Filosofía y psicología</option>
@@ -88,7 +88,7 @@
                             <label for="ubicacion" class="col-form-label">Ubicación:</label>
                             </div>
                             <div class="col-sm-9">
-                            <input type="text" id="ubicacion" class="form-control" placeholder="Ingresa ubicación">
+                            <input type="text" id="ubicacion" class="form-control" placeholder="Ingresa ubicación" name="ubicacion" [(ngModel)]="libroService.libro.ubicacion">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -96,7 +96,7 @@
                             <label for="edicion" class="col-form-label">Edición:</label>
                             </div>
                             <div class="col-sm-9">
-                            <input type="number" id="edicion" class="form-control" placeholder="Ingresa edición">
+                            <input type="number" id="edicion" class="form-control" placeholder="Ingresa edición" name="edicion" [(ngModel)]="libroService.libro.edicion">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -104,7 +104,7 @@
                             <label for="volumen" class="col-form-label">Volumen:</label>
                             </div>
                             <div class="col-sm-9">
-                            <input type="number" id="volumen" class="form-control" placeholder="Ingresa volumen">
+                            <input type="number" id="volumen" class="form-control" placeholder="Ingresa volumen" name="volumen" [(ngModel)]="libroService.libro.volumen">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -112,7 +112,7 @@
                             <label for="fecha-publi" class="col-form-label">Fecha publicación:</label>
                             </div>
                             <div class="col-sm-9">
-                            <input type="date" id="fecha-publi" class="form-control" placeholder="Ingresa fecha publicación">
+                            <input type="date" id="fecha-publi" class="form-control" placeholder="Ingresa fecha publicación" name="fecha_publicacion" [(ngModel)]="libroService.libro.fecha_publicacion">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -120,7 +120,7 @@
                             <label for="lugar-publi" class="col-form-label">Lugar publicación:</label>
                             </div>
                             <div class="col-sm-9">
-                            <input type="text" id="lugar-publi" class="form-control" placeholder="Ingresa lugar publicación">
+                            <input type="text" id="lugar-publi" class="form-control" placeholder="Ingresa lugar publicación" name="lugar_publicacion" [(ngModel)]="libroService.libro.lugar_publicacion">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -142,7 +142,7 @@
                             </div>
                         </div>
                         <div class="row boton"> <!-- BOTÓN GUARDAR-->                
-                            <button type="button" class="btn btn-warning">
+                            <button type="button" class="btn btn-warning" type="submit" >
                                 <i class="fa-solid fa-floppy-disk" style="color: #FFFFFF;"></i> Guardar
                             </button>
                         </div>
