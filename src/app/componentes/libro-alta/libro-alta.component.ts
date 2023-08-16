@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Libro } from 'src/models/libro';
+import { Tipo } from 'src/models/tipos';
+import { Categoria } from 'src/models/categoria';
 import { LibroAltaService } from 'src/app/services/libro-alta.service';
+import { TiposService } from 'src/app/services/tipos.service';
+import { CategoriaService } from 'src/app/services/categoria.service';
 import { OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -11,12 +15,46 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./libro-alta.component.css']
 })
 export class LibroAltaComponent implements OnInit {
-  constructor(public libroService:LibroAltaService) { }
+  constructor(public libroService:LibroAltaService, public tipoService:TiposService, public categoriaService:CategoriaService) { }
 
   ngOnInit(): void { //ngOnInit -> signica que cuando se cargue el componente muestre todo lo que tiene dentro.
     //console.log(this.empleadoService.getEmpleados());
     this.getLibro();
+    this.getTipo();
+    this.getCategoria();
+    this.getEditorial();
   }
+
+  getEditorial(){
+    this.categoriaService.getCategoria().subscribe(
+      res => {
+        this.categoriaService.categorias= res;
+        console.log(res);
+      },
+      err => console.log(err)
+    )
+  }
+  
+  getCategoria(){
+    this.categoriaService.getCategoria().subscribe(
+      res => {
+        this.categoriaService.categorias= res;
+        console.log(res);
+      },
+      err => console.log(err)
+    )
+  }
+
+  getTipo(){
+    this.tipoService.getTipos().subscribe(
+      res => {
+        this.tipoService.tipos= res;
+        console.log(res);
+      },
+      err => console.log(err)
+    )
+  }
+
 
   getLibro(){
     this.libroService.getLibro().subscribe(
@@ -40,7 +78,7 @@ export class LibroAltaComponent implements OnInit {
   }     
 
   updateLibro(form:NgForm){
-    alert('actualizando'); 
+    alert('Registro actualizando'); 
        this.libroService.editLibro(form.value).subscribe( //recibe como parametro los datos del formulario
         res=> console.log(res),
         err=> console.log(err)
@@ -50,7 +88,7 @@ export class LibroAltaComponent implements OnInit {
   deleteLibro(id:any){
     //alert('Borrando');
      const resp= confirm('Estas seguro de eliminarlo?');
-     console.log('eliminando '+id);
+     console.log('Eliminado '+id);
      if(resp){
        this.libroService.deleteLibro(id).subscribe( //elimina el registro
         (res)=>{

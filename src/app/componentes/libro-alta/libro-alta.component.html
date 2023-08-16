@@ -7,7 +7,7 @@
             <form  #libroForm="ngForm" (ngSubmit)="createLibro(libroForm)">
                 <div class="row aling-items-center ti">
                     <p>Alta Libro</p>
-                </div>
+                </div> 
                 <div class="d-usuario row align-items-center"> <!-- DATOS LIBRO-->
                     <div class="col-sm-11 tdatos">
                         <div class="row align-items-center">
@@ -25,15 +25,7 @@
                             <div class="col-sm-9">
                                 <select class="form-select" id="categoria" placeholder="Selecciona tipo" name="id_tipo" [(ngModel)]="libroService.libro.id_tipo">
                                     <option selected >Selecciona tipo...</option>
-                                    <option value="1">Libros</option>
-                                    <option value="2">Revistas</option>
-                                    <option value="3">Enciclopedias</option>
-                                    <option value="4">Diccionarios</option>
-                                    <option value="5">Videos CD</option>
-                                    <option value="6">Videos DVD</option>
-                                    <option value="7">Cintas VHC</option>
-                                    <option value="8">Tesis en disco</option>
-                                    <option value="10">Tesis impresas</option>
+                                    <option *ngFor="let item of tipoService.tipos" [value]="item.id_tipo">{{item.nombre_tipo}}</option>
                                 </select>                        
                             </div>
                         </div>
@@ -55,10 +47,13 @@
                         </div>
                         <div class="row align-items-center">
                             <div class="col-sm-3">
-                            <label for="editorial" class="col-form-label">Editorial:</label>
+                                <label for="editorial" class="col-form-label">Editorial:</label>
                             </div>
                             <div class="col-sm-9">
-                            <input type="text" id="editorial" class="form-control" placeholder="Ingresa editorial" name="id_editorial" [(ngModel)]="libroService.libro.id_editorial">
+                                <select class="form-select" id="editorial" placeholder="Selecciona tipo" name="id_editorial" [(ngModel)]="libroService.libro.id_editorial">
+                                    <option selected >Selecciona tipo...</option>
+                                    <option *ngFor="let item of tipoService.tipos" [value]="item.id_tipo">{{item.nombre_tipo}}</option>
+                                </select>   
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -68,18 +63,7 @@
                             <div class="col-sm-9">
                                 <select class="form-select" id="categoria" placeholder="Selecciona categoría" name="id_categoria" [(ngModel)]="libroService.libro.id_categoria">
                                     <option selected >Selecciona categoría...</option>
-                                    <option value="1">Generalidades</option>
-                                    <option value="2">Filosofía y psicología</option>
-                                    <option value="3">Religión</option>
-                                    <option value="4">Ciencias Sociales</option>
-                                    <option value="5">Lenguas</option>
-                                    <option value="6">Ciencias Básicas</option>
-                                    <option value="8">Tecnologias y Ciencias Aplicadas</option>
-                                    <option value="9">Literatura</option>
-                                    <option value="10">Bellas Artes</option>
-                                    <option value="11">Colección de consulta</option>
-                                    <option value="11">Tesis</option>
-                                    <option value="11">Revistas</option>
+                                    <option *ngFor="let item of categoriaService.categorias" [value]="item.id_categoria">{{item.categoria}}</option>
                                   </select>                        
                             </div>
                         </div>

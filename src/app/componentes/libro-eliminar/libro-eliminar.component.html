@@ -4,7 +4,7 @@
             <app-lateral></app-lateral>
         </div> <!-- CIERRA MENÚ LATERAL-->
         <div class="con col-sm-10"> <!-- CONTENIDO-->
-            <form>
+            <form #libroForm = "ngForm" (ngSubmit)="getLibro()">
                 <div class="row aling-items-center ti">
                     <p>Eliminar Libro</p>
                 </div>
