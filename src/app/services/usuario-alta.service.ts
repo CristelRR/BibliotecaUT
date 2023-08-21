@@ -38,9 +38,9 @@ export class UsuarioAltaService {
   deleteUsuario(id_usuario:number){
      return this.http.delete(this.URL_API+id_usuario);
       
-    }
+  }
 
-    editUsuario(usuario:Usuario){
-      return this.http.put(this.URL_API+usuario.id_usuario,usuario);
-    }
+  editUsuario(usuario:Usuario){
+    return this.http.put(this.URL_API+usuario.id_usuario,usuario);
+  }
 }

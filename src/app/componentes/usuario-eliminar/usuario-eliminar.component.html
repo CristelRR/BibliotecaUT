@@ -35,7 +35,7 @@
                                 <label for="id-usuario2" class="col-form-label">ID Usuario:</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" id="id-usuario2" class="form-control" placeholder="Ingresa ID usuario" name="id_usuario" [(ngModel)]="usuariosService.usuario.id_usuario">
+                                <input type="text" id="id-usuario2" class="form-control" placeholder="Ingresa ID usuario" name="id_usuario" [(ngModel)]="usuariosService.usuarios[0].id_usuario">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -43,7 +43,7 @@
                                 <label for="nombre" class="col-form-label">Nombre:</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" id="nombre" class="form-control" placeholder="Ingresa nombre" name="nombre" [(ngModel)]="usuariosService.usuario.nombre">
+                                <input type="text" id="nombre" class="form-control" placeholder="Ingresa nombre" name="nombre" [(ngModel)]="usuariosService.usuarios[0].nombre">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -51,7 +51,7 @@
                                 <label for="ap-p" class="col-form-label">Apellido paterno:</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" id="ap-p" class="form-control" placeholder="Ingresa apellido paterno" name="ap-p" [(ngModel)]="usuariosService.usuario.ap_paterno">
+                                <input type="text" id="ap-p" class="form-control" placeholder="Ingresa apellido paterno" name="ap-p" [(ngModel)]="usuariosService.usuarios[0].ap_paterno">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -59,7 +59,7 @@
                                 <label for="ap-m" class="col-form-label">Apellido materno:</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" id="ap-m" class="form-control" placeholder="Ingresa apellido materno" name="ap-m" [(ngModel)]="usuariosService.usuario.ap_materno">
+                                <input type="text" id="ap-m" class="form-control" placeholder="Ingresa apellido materno" name="ap-m" [(ngModel)]="usuariosService.usuarios[0].ap_materno">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -80,7 +80,7 @@
                                 <label for="carrera" class="col-form-label">Carrera:</label>
                             </div>
                             <div class="col-sm-9">
-                                <select class="form-select" id="categoria" placeholder="Selecciona categoría" name="id_categoria" [(ngModel)]="usuariosService.usuario.id_carrera">
+                                <select class="form-select" id="categoria" placeholder="Selecciona categoría" name="id_categoria" [(ngModel)]="usuariosService.usuarios[0].id_carrera">
                                     <option selected >Selecciona categoría...</option>
                                     <option *ngFor="let item of carrerasService.carreras" [value]="item.id_carrera">{{item.carrera}}</option>
                                 </select>
@@ -91,7 +91,7 @@
                                 <label for="correo" class="col-form-label">Correo Electrónico:</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" id="correo" class="form-control" placeholder="Ingresa correo electrónico" name="correo" [(ngModel)]="usuariosService.usuario.correo">
+                                <input type="text" id="correo" class="form-control" placeholder="Ingresa correo electrónico" name="correo" [(ngModel)]="usuariosService.usuarios[0].correo">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -99,7 +99,7 @@
                                 <label for="contra" class="col-form-label">Contraseña:</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="password" id="contra" class="form-control" placeholder="Ingresa contraseña" name="contrasena" [(ngModel)]="usuariosService.usuario.contrasena">
+                                <input type="password" id="contra" class="form-control" placeholder="Ingresa contraseña" name="contrasena" [(ngModel)]="usuariosService.usuarios[0].contrasena">
                             </div>
                         </div>
                         <div class="row boton"> <!-- BOTÓN ELIMINAR-->

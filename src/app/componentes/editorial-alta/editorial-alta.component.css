@@ -63,11 +63,13 @@
     margin-bottom: 20px;
 }
 
-a{
-    float: right;
-    margin-top: 5px;
-    margin-bottom: 10px;
+.bt1{
+    width: 30px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-size: 14px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
-
 
 

@@ -11,6 +11,7 @@ import { LibroEliminarComponent } from './componentes/libro-eliminar/libro-elimi
 import { PrestamoLibroComponent } from './componentes/prestamo-libro/prestamo-libro.component';
 import { DevolucionLibroComponent } from './componentes/devolucion-libro/devolucion-libro.component';
 import { ConsultarLibroComponent } from './componentes/consultar-libro/consultar-libro.component';
+import { EditorialAltaComponent } from './componentes/editorial-alta/editorial-alta.component';
 
 const routes: Routes = [
   { path: 'inicio', component:InicioComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'libro-eliminar', component:LibroEliminarComponent },
   { path: 'prestamo', component:PrestamoLibroComponent },
   { path: 'devolucion', component:DevolucionLibroComponent },
-  { path: 'consultar', component:ConsultarLibroComponent}
+  { path: 'consultar', component:ConsultarLibroComponent},
+  { path: 'editorial-alta', component:EditorialAltaComponent}
 ];
 
 @NgModule({

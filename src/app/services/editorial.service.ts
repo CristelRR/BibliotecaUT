@@ -18,9 +18,20 @@ export class EditorialService {
 
   editoriales:Editorial[]=[];
 
-
   getEditorial(){
-    return this.http.get<Editorial[]>(this.URL_API);
+    return this.http.get<Editorial[]>(this.URL_API);   
+  }
+
+  createEditorial(editorial:Editorial){
+    return this.http.post(this.URL_API,editorial);
+  }
+
+  editEditorial(editorial:Editorial){
+    return this.http.put(this.URL_API+editorial.id_editorial,editorial);
+  }
+
+  deleteEditorial(id_editorial:number){
+    return this.http.delete(this.URL_API+id_editorial);
   }
 }
  

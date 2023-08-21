@@ -19,6 +19,7 @@ import { LibroEliminarComponent } from './componentes/libro-eliminar/libro-elimi
 import { PrestamoLibroComponent } from './componentes/prestamo-libro/prestamo-libro.component';
 import { DevolucionLibroComponent } from './componentes/devolucion-libro/devolucion-libro.component';
 import { ConsultarLibroComponent } from './componentes/consultar-libro/consultar-libro.component';
+import { EditorialAltaComponent } from './componentes/editorial-alta/editorial-alta.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ConsultarLibroComponent } from './componentes/consultar-libro/consultar
     LibroEliminarComponent,
     PrestamoLibroComponent,
     DevolucionLibroComponent,
-    ConsultarLibroComponent
+    ConsultarLibroComponent,
+    EditorialAltaComponent
   ],
   imports: [
     BrowserModule,
