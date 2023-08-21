@@ -3,13 +3,21 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';//<--- HttpClient Permite hacer el ruteo
 
 
-@Injectable({
+@Injectable({ 
   providedIn: 'root'
 })
 export class UsuarioAltaService {
   URL_API= 'http://localhost:4000/usuario/'; //<-----
   public usuario:Usuario=
-  {id_usuario:0, nombre:'', ap_paterno:'', ap_materno:'', correo:'', contrasena:'', tipo:'', id_carrera:0 };
+  {id_usuario: '', 
+    nombre:'', 
+    ap_paterno:'', 
+    ap_materno:'', 
+    correo:'', 
+    contrasena:'', 
+    rol:'', 
+    id_carrera: 0
+  };
 
   usuarios: Usuario[]=[];
 
@@ -17,6 +25,10 @@ export class UsuarioAltaService {
 
   getUsuarios(){
     return this.http.get<Usuario[]>(this.URL_API);   //<------
+  }
+
+  getByIdUsuario(id_usuario: number) {
+    return this.http.get<Usuario[]>(this.URL_API+id_usuario);
   }
 
   createUsuario(usuario:Usuario){

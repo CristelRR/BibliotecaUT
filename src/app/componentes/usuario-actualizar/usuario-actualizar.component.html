@@ -4,7 +4,7 @@
             <app-lateral></app-lateral>
         </div> <!-- CIERRA MENÚ LATERAL-->
         <div class="con col-sm-10"> <!-- CONTENIDO-->
-            <form>
+            <form #usuarioForm="ngForm" (ngSubmit)="getByIdUsuario(usuariosService.usuario.id_usuario)">
                 <div class="row aling-items-center ti">
                     <p>Actualizar Usuario</p>
                 </div>
@@ -15,25 +15,27 @@
                                 <label for="id-usuario" class="col-form-label">ID Usuario:</label>
                             </div>
                             <div class="col-sm-6">
-                                <input type="text" id="id-usuario" class="form-control" placeholder="Ingresa ID usuario">
+                                <input type="text" id="id-usuario" class="form-control" placeholder="Ingresa ID usuario" name="id_usuario" [(ngModel)]="usuariosService.usuario.id_usuario" >
                             </div>
                             <div class="col-sm-3 boton align-items-center">
-                                <button type="button" id="buscar" class="btn btn-warning">
+                                <button type="submit" id="buscar" class="btn btn-warning">
                                     <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>  Buscar
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
+            </form>
                 <hr>
-                <div class="d-usuario row align-items-center"> <!-- DATOS USUARIO-->
+            <form  #libroEliminarForm="ngForm" (ngSubmit)="updateUsuario(usuariosService.usuario.id_usuario)"> 
+                    <div class="d-usuario row align-items-center"> <!-- DATOS USUARIO-->
                     <div class="col-sm-11 tdatos">
                         <div class="row align-items-center">
                             <div class="col-sm-3">
-                                <label for="id-usuario" class="col-form-label">ID Usuario:</label>
+                                <label for="id-usuario2" class="col-form-label">ID Usuario:</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" id="id-usuario" class="form-control" placeholder="Ingresa ID usuario">
+                                <input type="text" id="id-usuario2" class="form-control" placeholder="Ingresa ID usuario" name="id_usuario" [(ngModel)]="usuariosService.usuario.id_usuario">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -41,7 +43,7 @@
                                 <label for="nombre" class="col-form-label">Nombre:</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" id="nombre" class="form-control" placeholder="Ingresa nombre">
+                                <input type="text" id="nombre" class="form-control" placeholder="Ingresa nombre" name="nombre" [(ngModel)]="usuariosService.usuario.nombre">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -49,8 +51,7 @@
                                 <label for="ap-p" class="col-form-label">Apellido paterno:</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" id="ap-p" class="form-control"
-                                    placeholder="Ingresa apellido paterno">
+                                <input type="text" id="ap-p" class="form-control" placeholder="Ingresa apellido paterno" name="ap-p" [(ngModel)]="usuariosService.usuario.ap_paterno">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -58,16 +59,15 @@
                                 <label for="ap-m" class="col-form-label">Apellido materno:</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" id="ap-m" class="form-control"
-                                    placeholder="Ingresa apellido paterno">
+                                <input type="text" id="ap-m" class="form-control" placeholder="Ingresa apellido materno" name="ap-m" [(ngModel)]="usuariosService.usuario.ap_materno">
                             </div>
                         </div>
                         <div class="row align-items-center">
                             <div class="col-sm-3">
-                                <label for="area-academica" class="col-form-label">Rol:</label>
+                                <label for="rol" class="col-form-label">Rol:</label>
                             </div>
                             <div class="col-sm-9">
-                                <select class="form-select" id="area-academica">
+                                <select class="form-select" id="rol" name="rol" [(ngModel)]="usuariosService.usuario.rol" >
                                     <option selected>Selecciona rol..</option>
                                     <option value="1">Bibliotecario</option>
                                     <option value="2">Profesor</option>
@@ -77,44 +77,12 @@
                         </div>
                         <div class="row align-items-center">
                             <div class="col-sm-3">
-                                <label for="area-academica" class="col-form-label">Área académica:</label>
-                            </div>
-                            <div class="col-sm-9">
-                                <select class="form-select" id="area-academica">
-                                    <option selected>Selecciona área académica..</option>
-                                    <option value="1">Económico Administrativa</option>
-                                    <option value="2">Tecnologías de la Información y Comunicación</option>
-                                    <option value="3">Industrial, Eléctrica y Electrónica/option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row align-items-center">
-                            <div class="col-sm-3">
                                 <label for="carrera" class="col-form-label">Carrera:</label>
                             </div>
                             <div class="col-sm-9">
-                                <select class="form-select" id="carrera">
-                                    <option selected>Selecciona carrera..</option>
-                                    <option value="1">Administración Área Capital Humano</option>
-                                    <option value="2">Desarrollo de Negoción Área Mercadotecnia</option>
-                                    <option value="3">Contaduría</option>
-                                    <option value="4">Turismo</option>
-                                    <option value="5">Licenciatura en Gestión del Capital Humano</option>
-                                    <option value="6">Licenciatura en Innovacción de Negocios y Mercadotecnia</option>
-                                    <option value="8">Licenciatura en Contaduría</option>
-                                    <option value="9">Desarrollo de Software Multiplataforma</option>
-                                    <option value="10">Ingeniería en Desarrollo y Gestión de Software</option>
-                                    <option value="11">Infraestructura en Redes Digitales</option>
-                                    <option value="12">Ingeniería en Redes Inteligentes y Ciberseguridad</option>
-                                    <option value="13">Entornos Virtuales y Negocios Digitales</option>
-                                    <option value="14">Ingeniería en Entornos Virtuales y Negocios Digitales</option>
-                                    <option value="15">Diseño Digital</option>
-                                    <option value="16">Licenciatura en Diseño Digital y Producción Audiovisual</option>
-                                    <option value="17">Mecatrónica Área Instalaciones Eléctricas Eficientes</option>
-                                    <option value="18">Procesos Industriales Área Manufactura</option>
-                                    <option value="19">Energías Renovables Área Calidad y Ahorro de Energía</option>
-                                    <option value="20">Ingeniería en Mecatrónica</option>
-                                    <option value="21">Ingeniería en Tecnologías de la Producción</option>
+                                <select class="form-select" id="categoria" placeholder="Selecciona categoría" name="id_categoria" [(ngModel)]="usuariosService.usuario.id_carrera">
+                                    <option selected >Selecciona categoría...</option>
+                                    <option *ngFor="let item of carrerasService.carreras" [value]="item.id_carrera">{{item.carrera}}</option>
                                 </select>
                             </div>
                         </div>
@@ -123,8 +91,7 @@
                                 <label for="correo" class="col-form-label">Correo Electrónico:</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" id="correo" class="form-control"
-                                    placeholder="Ingresa correo electrónico">
+                                <input type="text" id="correo" class="form-control" placeholder="Ingresa correo electrónico" name="correo" [(ngModel)]="usuariosService.usuario.correo">
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -132,12 +99,12 @@
                                 <label for="contra" class="col-form-label">Contraseña:</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" id="contra" class="form-control" placeholder="Ingresa contraseña">
+                                <input type="password" id="contra" class="form-control" placeholder="Ingresa contraseña" name="contrasena" [(ngModel)]="usuariosService.usuario.contrasena">
                             </div>
                         </div>
-                        <div class="row boton"> <!-- BOTÓN GUARDAR-->
-                            <button type="button" class="btn btn-warning">
-                                <i class="fa-solid fa-floppy-disk fa-lg" style="color: #ffffff;"></i> Guardar
+                        <div class="row boton"> <!-- BOTÓN ELIMINAR-->
+                            <button type="submit" class="btn btn-warning">
+                                <i class="fa-solid fa-trash" style="color: #ffffff;"></i> Eliminar
                             </button>
                         </div>
                     </div>

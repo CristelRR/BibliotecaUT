@@ -5,6 +5,6 @@ export interface Usuario{
     ap_materno: string,
     correo: string,
     contrasena: string,      //<<<
-    tipo: string ,   //<<<
+    rol: string ,   //<<<
     id_carrera:number
 }

@@ -16,12 +16,15 @@ export class LibroAltaService {
       autor: '', 	
       id_editorial: 0,	
       id_categoria: 0,	
-      edicion: 1,	
-      volumen: 1,	
+      edicion: 0,	
+      volumen: 0,	
       ubicacion: '',	
       fecha_publicacion: '',	
       lugar_publicacion: '',	
-      foto: ''
+      foto: '',
+      nombre_editorial: '',
+      categoria: '',
+      nombre_tipo: ''
 };
 
   libros: Libro[]=[];
@@ -36,18 +39,33 @@ export class LibroAltaService {
     return this.http.get<Libro[]>(this.URL_API+id_libro);
   }
   
-
   createLibro(libro:Libro){
     return this.http.post(this.URL_API,libro);
   }
 
   deleteLibro(id_libro:number){
      return this.http.delete(this.URL_API+id_libro);
-      
     }
 
-    editLibro(libro:Libro){
-      return this.http.put(this.URL_API+libro.id_libro,libro);
-    }
+  editLibro(libro:Libro){
+    return this.http.put(this.URL_API+libro.id_libro,libro);
+  }
+
+  getByTitulo(titulo:string){
+    return this.http.get<Libro[]>(this.URL_API+'/titulo/'+titulo);   //<------ Busqueda por titulo
+  }
+  
+  getByAutor(autor:string){
+    return this.http.get<Libro[]>(this.URL_API+'/autor/'+autor);   //<------ Busqueda por tipo
+  }
+  
+  getByTipo(nombre_tipo:string){
+    return this.http.get<Libro[]>(this.URL_API+'/nombre_tipo/'+nombre_tipo);   //<------ Busqueda por tipo
+  }
+  
+    
+  getByCategoria(categoria:string){
+    return this.http.get<Libro[]>(this.URL_API+'/categoria/'+categoria);   //<------Busqueda de por Categoria
+  }
 }
 

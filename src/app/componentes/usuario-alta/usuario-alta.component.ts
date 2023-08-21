@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Usuario } from 'src/models/usuario';
 import { UsuarioAltaService } from 'src/app/services/usuario-alta.service';
+import { CarrerasService } from 'src/app/services/carreras.service';
 import { OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -11,11 +12,22 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./usuario-alta.component.css']
 })
 export class UsuarioAltaComponent implements OnInit {
-  constructor(public usuarioService:UsuarioAltaService) { }
+  constructor(public usuarioService:UsuarioAltaService, public carrerasService:CarrerasService) { }
 
   ngOnInit(): void { //ngOnInit -> signica que cuando se cargue el componente muestre todo lo que tiene dentro.
     //console.log(this.empleadoService.getEmpleados());
     this.getUsuarios();
+    this.getCarrera();
+  }
+
+  getCarrera(){
+    this.carrerasService.getCarrera().subscribe(
+      res => {
+        this.carrerasService.carreras= res;
+        console.log(res);
+      },
+      err => console.log(err)
+    )
   }
 
   getUsuarios(){

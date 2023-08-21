@@ -12,7 +12,7 @@ export class TiposService {
   URL_API= 'http://localhost:4000/tipo/'; //<-----
   public tipo:Tipo=
     {    
-      id_tipo: 0,	
+      id_tipo: 0,	 
       nombre_tipo:''
     };
 

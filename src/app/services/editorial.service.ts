@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Categoria } from 'src/models/categoria';
 import { HttpClient } from '@angular/common/http';
 import { Editorial } from 'src/models/editorial';
 
@@ -20,7 +19,7 @@ export class EditorialService {
   editoriales:Editorial[]=[];
 
 
-  getCategoria(){
+  getEditorial(){
     return this.http.get<Editorial[]>(this.URL_API);
   }
 }

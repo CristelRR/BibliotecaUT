@@ -10,5 +10,8 @@ export interface Libro{
     ubicacion:string,
     fecha_publicacion:string,
     lugar_publicacion:string,
-    foto:string
+    foto:string,
+    nombre_editorial: String,
+    categoria: String,
+    nombre_tipo: String
 }

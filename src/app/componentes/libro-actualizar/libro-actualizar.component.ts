@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Libro } from 'src/models/libro';
 import { LibroAltaService } from 'src/app/services/libro-alta.service';
+import { TiposService } from 'src/app/services/tipos.service';
+import { CategoriaService } from 'src/app/services/categoria.service';
+import { EditorialService } from 'src/app/services/editorial.service';
 import { OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -10,12 +13,46 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./libro-actualizar.component.css']
 })
 export class LibroActualizarComponent implements OnInit{
-  constructor(public libroService:LibroAltaService) { }
+  constructor(public libroService:LibroAltaService, public tipoService:TiposService, public categoriaService:CategoriaService, public editorialService:EditorialService) { }
 
-  ngOnInit(): void { //ngOnInit -> signica que cuando se cargue el componente muestre todo lo que tiene dentro.
+  ngOnInit(): void { //ngOnInit -> sb  ignica que cuando se cargue el componente muestre todo lo que tiene dentro.
     //console.log(this.empleadoService.getEmpleados());
     this.getLibro();
+    this.getTipo();
+    this.getCategoria();
+    this.getEditorial();
   }
+
+  getEditorial(){
+    this.editorialService.getEditorial().subscribe(
+      res => {
+        this.editorialService.editoriales= res;
+        console.log(res);
+      },
+      err => console.log(err)
+    )
+  }
+  
+  getCategoria(){
+    this.categoriaService.getCategoria().subscribe(
+      res => {
+        this.categoriaService.categorias= res;
+        console.log(res);
+      },
+      err => console.log(err)
+    )
+  }
+
+  getTipo(){
+    this.tipoService.getTipos().subscribe(
+      res => {
+        this.tipoService.tipos= res;
+        console.log(res);
+      },
+      err => console.log(err)
+    )
+  }
+
 
   getLibro(){
     this.libroService.getLibro().subscribe(
@@ -28,7 +65,6 @@ export class LibroActualizarComponent implements OnInit{
   }
 
   getLibroID(id_libro:number){
-
     this.libroService.getLibroID(id_libro).subscribe(
       res => {
         this.libroService.libros= res;
@@ -58,12 +94,12 @@ export class LibroActualizarComponent implements OnInit{
        );
   }
 
-  deleteLibro(id:any){
+  deleteLibro(form:NgForm){
     //alert('Borrando');
      const resp= confirm('Estas seguro de eliminarlo?');
-     console.log('Eliminando '+id);
+     console.log('Eliminando '+form.value.id_libro);
      if(resp){
-       this.libroService.deleteLibro(id).subscribe( //elimina el registro
+       this.libroService.deleteLibro(form.value.id_libro).subscribe( //elimina el registro
         (res)=>{
           this.getLibro();
         },

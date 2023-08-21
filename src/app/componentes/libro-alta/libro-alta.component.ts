@@ -2,9 +2,11 @@ import { Component } from '@angular/core';
 import { Libro } from 'src/models/libro';
 import { Tipo } from 'src/models/tipos';
 import { Categoria } from 'src/models/categoria';
+import { Editorial } from 'src/models/editorial';
 import { LibroAltaService } from 'src/app/services/libro-alta.service';
 import { TiposService } from 'src/app/services/tipos.service';
 import { CategoriaService } from 'src/app/services/categoria.service';
+import { EditorialService } from 'src/app/services/editorial.service';
 import { OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -15,7 +17,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./libro-alta.component.css']
 })
 export class LibroAltaComponent implements OnInit {
-  constructor(public libroService:LibroAltaService, public tipoService:TiposService, public categoriaService:CategoriaService) { }
+  constructor(public libroService:LibroAltaService, public tipoService:TiposService, public categoriaService:CategoriaService, public editorialService:EditorialService) { }
 
   ngOnInit(): void { //ngOnInit -> signica que cuando se cargue el componente muestre todo lo que tiene dentro.
     //console.log(this.empleadoService.getEmpleados());
@@ -26,9 +28,9 @@ export class LibroAltaComponent implements OnInit {
   }
 
   getEditorial(){
-    this.categoriaService.getCategoria().subscribe(
+    this.editorialService.getEditorial().subscribe(
       res => {
-        this.categoriaService.categorias= res;
+        this.editorialService.editoriales= res;
         console.log(res);
       },
       err => console.log(err)
